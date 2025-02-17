@@ -24,14 +24,16 @@ const loginUser = async (req, res) => {
 
 // signup user
 const signupUser = async (req, res) => {
+  console.log("Signup endpoint hit!");
   const { email, password } = req.body;
   try {
-    // save user in database
+    // save user in database  
     const user = await User.signup(email, password);
     // create a token
     const token = createToken(user._id);
     res.status(200).json({ email, token });
   } catch (error) {
+    console.log("Error:", error.message);
     res.status(400).json({ error: error.message });
   }
 };

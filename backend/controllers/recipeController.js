@@ -91,10 +91,53 @@ const updateRecipe = async (req, res) => {
   res.status(200).json(recipe);
 };
 
+// ✅ Get all favorite recipes for the logged-in user
+const getFavorites = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id).populate("favorites");
+    res.status(200).json(user.favorites);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+// Add a recipe to favorites
+const addFavorite = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id);
+    const recipeId = req.params.id;
+
+    if (!user.favorites.includes(recipeId)) {
+      user.favorites.push(recipeId);
+      await user.save();
+    }
+
+    res.status(200).json(user.favorites);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+// Remove a recipe from favorites
+const removeFavorite = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id);
+    user.favorites = user.favorites.filter((id) => id.toString() !== req.params.id);
+    await user.save();
+
+    res.status(200).json(user.favorites);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 module.exports = {
   getAllRecipes,
   getRecipe,
   createRecipe,
   deleteRecipe,
   updateRecipe,
+  getFavorites, 
+  addFavorite, 
+  removeFavorite 
 };

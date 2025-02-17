@@ -1,0 +1,224 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Dancing+Script:wght@500&display=swap');
+
+/* Variables */
+:root {
+  --primary: #F76C6C;
+  --secondary: #FFA726;
+  --background: #121212;
+  --text-color: #EDEDED;
+  --text-light: #B0B0B0;
+  --white: #fff;
+  --error: #e7195a;
+  --glass: rgba(255, 255, 255, 0.1);
+  --shadow: 0px 4px 12px rgba(255, 255, 255, 0.1);
+  --gradient: linear-gradient(135deg, #F76C6C, #FFA726);
+}
+
+/* Base Styles */
+body {
+  background: var(--background);
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  color: var(--text-color);
+}
+
+/* Layout */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header */
+header {
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+header a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 1.5em;
+  font-weight: 600;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  align-items: center;
+}
+
+nav a, nav button {
+  margin-left: 15px;
+  font-size: 1em;
+  font-weight: 500;
+}
+
+nav button {
+  background: var(--gradient);
+  color: var(--white);
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+nav button:hover {
+  background: var(--primary);
+  transform: scale(1.05);
+}
+
+/* Homepage Grid */
+.home {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  margin-top: 40px;
+  padding: 0 40px;
+}
+
+/* Recipe Card */
+.workouts {
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  transition: 0.3s ease-in-out;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  
+  
+}
+
+.workouts > div {
+  margin: 30px; /* Adds margin between boxes */
+}
+
+.workouts:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 6px 15px rgba(255, 255, 255, 0.2);
+}
+
+.workouts img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.workouts h4 {
+  font-size: 1.6em;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 10px;
+}
+
+.workouts p {
+  font-size: 1em;
+  color: var(--text-light);
+}
+
+/* Forms */
+form {
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  max-width: 450px;
+  margin: 40px auto;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+label {
+  display: block;
+  font-weight: 500;
+  color: var(--text-color);
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  border-radius: 8px;
+  padding: 20px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  margin-top: 5px;
+  margin-bottom: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-color);
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+input:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+select {
+  margin-left: 12px;
+  padding: 4px;
+  border-radius: 30px;
+}
+
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+form button {
+  background: var(--gradient);
+  border: 0;
+  color: var(--white);
+  padding: 12px;
+  font-size: 1.1em;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+form button:hover {
+  background: var(--primary);
+  transform: scale(1.05);
+}
+
+/* Error Messages */
+div.error {
+  padding: 12px;
+  background: rgba(231, 76, 60, 0.2);
+  border: 1px solid var(--error);
+  color: var(--error);
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .home {
+    grid-template-columns: 1fr;
+  }
+
+  header .container {
+    flex-direction: column;
+    align-items: center;
+  }
+}

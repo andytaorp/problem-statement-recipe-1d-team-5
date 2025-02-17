@@ -6,6 +6,9 @@ const {
   createRecipe,
   updateRecipe,
   deleteRecipe,
+  getFavorites,
+  addFavorite,
+  removeFavorite,
 } = require("../controllers/recipeController");
 
 const authMiddleware = require("../middleware/auth");
@@ -28,5 +31,16 @@ router.patch("/:id", updateRecipe);
 
 // Delete Recipe
 router.delete("/:id", deleteRecipe);
+
+// Get All Favorite Recipes
+router.get('/favorites', getFavorites);
+
+// Add a recipe to favorites
+router.post('/favorites/:id', addFavorite);
+
+// Remove a recipe from favorites
+router.delete('/favorites/:id', removeFavorite);
+
+
 
 module.exports = router;
