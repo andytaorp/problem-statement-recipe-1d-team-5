@@ -40,7 +40,7 @@ const RecipeDetails = ({ recipe }) => {
 
     try {
       const response = await fetch(
-        `http://localhost:4000/api/recipes/${recipe._id}`,
+        `${process.env.REACT_APP_API_URL}${recipe._id}`,
         {
           method: "PATCH",
           headers: {
@@ -73,7 +73,7 @@ const RecipeDetails = ({ recipe }) => {
 
     try {
       const response = await fetch(
-        `http://localhost:4000/api/recipes/${recipe._id}`,
+        `${process.env.REACT_APP_API_URL}/api/recipes/${recipe._id}`,
         {
           method: "DELETE",
           headers: {
